@@ -9,6 +9,7 @@ import { gnomeSort } from 'src/sorts/gnomeSort';
 import { insertionSort } from 'src/sorts/insertionSort';
 import { bucketSort } from 'src/sorts/bucketSort';
 import { shellSort } from 'src/sorts/shellSort';
+import { countingSort } from 'src/sorts/countingSort';
 
 describe('Sorting Algorithm Tests', () => {
   const sortFunctions = [
@@ -20,6 +21,7 @@ describe('Sorting Algorithm Tests', () => {
     { func: insertionSort, name: 'Insertion Sort' },
     { func: bucketSort, name: 'Bucket Sort' },
     { func: shellSort, name: 'Shell Sort' },
+    { func: countingSort, name: 'Counting Sort' },
   ];
 
   const testSizes = [10, 100];
