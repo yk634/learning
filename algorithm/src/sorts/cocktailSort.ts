@@ -1,7 +1,6 @@
-export function cocktailSort(numbers: number[]): {
-  answer: number[];
-  attempt: number;
-} {
+import { SortResult } from 'src/types';
+
+export function cocktailSort(numbers: number[]): SortResult {
   const answer = [...numbers];
 
   let attempt = 0;

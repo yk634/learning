@@ -1,7 +1,6 @@
-export function combSort(numbers: number[]): {
-  answer: number[];
-  attempt: number;
-} {
+import { SortResult } from 'src/types';
+
+export function combSort(numbers: number[]): SortResult {
   const answer = [...numbers];
 
   let attempt = 0;

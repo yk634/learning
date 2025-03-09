@@ -1,4 +1,5 @@
 import { inOrder } from 'src/utils/inOrder';
+import { SortResult } from 'src/types';
 
 function shuffle(numbers: number[]): void {
   for (let i = numbers.length - 1; i > 0; i--) {
@@ -7,10 +8,7 @@ function shuffle(numbers: number[]): void {
   }
 }
 
-export function bogoSort(numbers: number[]): {
-  answer: number[];
-  attempt: number;
-} {
+export function bogoSort(numbers: number[]): SortResult {
   const answer = [...numbers];
   let attempt = 0;
 

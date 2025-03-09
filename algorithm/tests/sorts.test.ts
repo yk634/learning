@@ -5,6 +5,7 @@ import { bubbleSort } from 'src/sorts/bubbleSort';
 import { cocktailSort } from 'src/sorts/cocktailSort';
 import { combSort } from 'src/sorts/combSort';
 import { selectionSort } from 'src/sorts/selectionSort';
+import { gnomeSort } from 'src/sorts/gnomeSort';
 
 describe('Sorting Algorithm Tests', () => {
   const sortFunctions = [
@@ -12,9 +13,11 @@ describe('Sorting Algorithm Tests', () => {
     { func: cocktailSort, name: 'Cocktail Sort' },
     { func: combSort, name: 'Comb Sort' },
     { func: selectionSort, name: 'Selection Sort' },
+    { func: gnomeSort, name: 'Gnome Sort' },
   ];
 
   const testSizes = [10, 100];
+  // const testSizes = [10];
 
   // パフォーマンス結果を格納する配列
   const performanceReports: {

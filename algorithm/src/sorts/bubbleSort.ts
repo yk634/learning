@@ -1,13 +1,12 @@
-export function bubbleSort(numbers: number[]): {
-  answer: number[];
-  attempt: number;
-} {
+import { SortResult } from 'src/types';
+
+export function bubbleSort(numbers: number[]): SortResult {
   const answer = [...numbers];
   let attempt = 0;
   let limit = answer.length - 1;
 
   while (0 < limit) {
-    let swapped: boolean = false;
+    let swapped = false;
 
     for (let i = 0; i < limit; i++) {
       if (answer[i] > answer[i + 1]) {
