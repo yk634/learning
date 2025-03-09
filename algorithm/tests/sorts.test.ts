@@ -10,6 +10,7 @@ import { insertionSort } from 'src/sorts/insertionSort';
 import { bucketSort } from 'src/sorts/bucketSort';
 import { shellSort } from 'src/sorts/shellSort';
 import { countingSort } from 'src/sorts/countingSort';
+import { radixSort } from 'src/sorts/radixSort';
 
 describe('Sorting Algorithm Tests', () => {
   const sortFunctions = [
@@ -22,6 +23,7 @@ describe('Sorting Algorithm Tests', () => {
     { func: bucketSort, name: 'Bucket Sort' },
     { func: shellSort, name: 'Shell Sort' },
     { func: countingSort, name: 'Counting Sort' },
+    { func: radixSort, name: 'Radix Sort' },
   ];
 
   const testSizes = [10, 100];
