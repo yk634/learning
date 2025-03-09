@@ -1,25 +1,19 @@
-import { SortResult } from 'src/types';
-
-export function bubbleSort(numbers: number[]): SortResult {
-  const answer = [...numbers];
-  let attempt = 0;
-  let limit = answer.length - 1;
+export function bubbleSort(numbers: number[]): number[] {
+  let limit = numbers.length - 1;
 
   while (0 < limit) {
     let swapped = false;
 
     for (let i = 0; i < limit; i++) {
-      if (answer[i] > answer[i + 1]) {
-        [answer[i], answer[i + 1]] = [answer[i + 1], answer[i]];
+      if (numbers[i] > numbers[i + 1]) {
+        [numbers[i], numbers[i + 1]] = [numbers[i + 1], numbers[i]];
         swapped = true;
       }
-
-      attempt++;
     }
 
     if (!swapped) break;
     limit--;
   }
 
-  return { answer, attempt };
+  return numbers;
 }

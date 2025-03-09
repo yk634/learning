@@ -1,23 +1,15 @@
-import { SortResult } from 'src/types';
-
-export function selectionSort(numbers: number[]): SortResult {
-  const answer = [...numbers];
-
-  let attempt = 0;
-
-  for (let start = 0; start < answer.length - 1; start++) {
+export function selectionSort(numbers: number[]): number[] {
+  for (let start = 0; start < numbers.length - 1; start++) {
     let minIndex = start;
 
-    for (let i = start + 1; i < answer.length; i++) {
-      if (answer[minIndex] > answer[i]) {
+    for (let i = start + 1; i < numbers.length; i++) {
+      if (numbers[minIndex] > numbers[i]) {
         minIndex = i;
       }
-
-      attempt++;
     }
 
-    [answer[start], answer[minIndex]] = [answer[minIndex], answer[start]];
+    [numbers[start], numbers[minIndex]] = [numbers[minIndex], numbers[start]];
   }
 
-  return { answer, attempt };
+  return numbers;
 }

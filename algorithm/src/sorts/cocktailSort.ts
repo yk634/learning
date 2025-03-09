@@ -1,10 +1,5 @@
-import { SortResult } from 'src/types';
-
-export function cocktailSort(numbers: number[]): SortResult {
-  const answer = [...numbers];
-
-  let attempt = 0;
-  let maxLimit = answer.length - 1;
+export function cocktailSort(numbers: number[]): number[] {
+  let maxLimit = numbers.length - 1;
   let minLimit = 0;
   let swapped = true;
 
@@ -12,12 +7,10 @@ export function cocktailSort(numbers: number[]): SortResult {
     swapped = false;
 
     for (let i = minLimit; i < maxLimit; i++) {
-      if (answer[i] > answer[i + 1]) {
-        [answer[i], answer[i + 1]] = [answer[i + 1], answer[i]];
+      if (numbers[i] > numbers[i + 1]) {
+        [numbers[i], numbers[i + 1]] = [numbers[i + 1], numbers[i]];
         swapped = true;
       }
-
-      attempt++;
     }
 
     maxLimit--;
@@ -25,16 +18,14 @@ export function cocktailSort(numbers: number[]): SortResult {
     if (!swapped) break;
 
     for (let i = maxLimit; i > minLimit; i--) {
-      if (answer[i] < answer[i - 1]) {
-        [answer[i], answer[i - 1]] = [answer[i - 1], answer[i]];
+      if (numbers[i] < numbers[i - 1]) {
+        [numbers[i], numbers[i - 1]] = [numbers[i - 1], numbers[i]];
         swapped = true;
       }
-
-      attempt++;
     }
 
     minLimit++;
   }
 
-  return { answer, attempt };
+  return numbers;
 }

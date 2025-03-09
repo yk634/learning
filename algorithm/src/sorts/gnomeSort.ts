@@ -1,24 +1,17 @@
-import { SortResult } from 'src/types';
-
-export function gnomeSort(numbers: number[]): SortResult {
-  const answer = [...numbers];
-
-  let attempt = 0;
+export function gnomeSort(numbers: number[]): number[] {
   let i = 0;
 
-  while (i < answer.length) {
-    attempt++;
-
+  while (i < numbers.length) {
     if (i === 0) {
       i++;
     }
-    if (answer[i - 1] <= answer[i]) {
+    if (numbers[i - 1] <= numbers[i]) {
       i++;
     } else {
-      [answer[i], answer[i - 1]] = [answer[i - 1], answer[i]];
+      [numbers[i], numbers[i - 1]] = [numbers[i - 1], numbers[i]];
       i--;
     }
   }
 
-  return { answer, attempt };
+  return numbers;
 }
