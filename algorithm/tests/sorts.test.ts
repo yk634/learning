@@ -7,6 +7,7 @@ import { combSort } from 'src/sorts/combSort';
 import { selectionSort } from 'src/sorts/selectionSort';
 import { gnomeSort } from 'src/sorts/gnomeSort';
 import { insertionSort } from 'src/sorts/insertionSort';
+import { bucketSort } from 'src/sorts/bucketSort';
 
 describe('Sorting Algorithm Tests', () => {
   const sortFunctions = [
@@ -16,6 +17,7 @@ describe('Sorting Algorithm Tests', () => {
     { func: selectionSort, name: 'Selection Sort' },
     { func: gnomeSort, name: 'Gnome Sort' },
     { func: insertionSort, name: 'Insertion Sort' },
+    { func: bucketSort, name: 'Bucket Sort' },
   ];
 
   const testSizes = [10, 100];
