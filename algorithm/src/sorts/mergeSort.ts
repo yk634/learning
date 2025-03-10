@@ -40,9 +40,3 @@ export function mergeSort(numbers: number[]): number[] {
 
   return numbers;
 }
-
-import { generateRandomArray } from 'src/utils/generate';
-
-const arg = generateRandomArray();
-console.log(arg);
-console.log(mergeSort(arg));

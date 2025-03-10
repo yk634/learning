@@ -12,6 +12,7 @@ import { shellSort } from 'src/sorts/shellSort';
 import { countingSort } from 'src/sorts/countingSort';
 import { radixSort } from 'src/sorts/radixSort';
 import { quickSort } from 'src/sorts/quickSort';
+import { mergeSort } from 'src/sorts/mergeSort';
 
 describe('Sorting Algorithm Tests', () => {
   const sortFunctions = [
@@ -26,6 +27,7 @@ describe('Sorting Algorithm Tests', () => {
     { func: countingSort, name: 'Counting Sort' },
     { func: radixSort, name: 'Radix Sort' },
     { func: quickSort, name: 'Quick Sort' },
+    { func: mergeSort, name: 'Merge Sort' },
   ];
 
   const testSizes = [10, 100];
