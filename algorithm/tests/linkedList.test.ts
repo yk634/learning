@@ -68,4 +68,30 @@ describe('Singly Linked List Functions Tests', () => {
 
     consoleSpy.mockRestore();
   });
+
+  test('Reverse Iterative Function Test', () => {
+    linkedList.append(1);
+    linkedList.append(2);
+    linkedList.append(3);
+
+    linkedList.reverseIterative();
+
+    expect(linkedList.head).toEqual({
+      data: 3,
+      next: { data: 2, next: { data: 1, next: null } },
+    });
+  });
+
+  test('Reverse Recursive Function Test', () => {
+    linkedList.append(1);
+    linkedList.append(2);
+    linkedList.append(3);
+
+    linkedList.reverseRecursive();
+
+    expect(linkedList.head).toEqual({
+      data: 3,
+      next: { data: 2, next: { data: 1, next: null } },
+    });
+  });
 });

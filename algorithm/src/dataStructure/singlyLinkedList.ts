@@ -19,10 +19,8 @@ export class SinglyLinkedList {
     if (!this.head) return;
 
     let currentNode = this.head;
-    console.log(currentNode.data);
-
-    while (currentNode.next) {
-      console.log(currentNode.next.data);
+    while (currentNode) {
+      console.log(currentNode.data);
       currentNode = currentNode.next;
     }
   }
@@ -36,7 +34,6 @@ export class SinglyLinkedList {
     }
 
     let currentNode = this.head;
-
     while (currentNode.next) {
       currentNode = currentNode.next;
     }
@@ -66,5 +63,40 @@ export class SinglyLinkedList {
     if (!currentNode) return;
 
     previousNode.next = currentNode.next;
+  }
+
+  reverseIterative(): void {
+    let previousNode = null;
+    let currentNode = this.head;
+
+    let i = 0;
+    while (currentNode) {
+      const nextNode = currentNode.next;
+      currentNode.next = previousNode;
+
+      previousNode = currentNode;
+      currentNode = nextNode;
+    }
+
+    this.head = previousNode;
+  }
+
+  reverseRecursive(): void {
+    function _reverseRecur(previousNode, currentNode) {
+      if (!currentNode) return previousNode;
+
+      const nextNode = currentNode.next;
+      currentNode.next = previousNode;
+
+      previousNode = currentNode;
+      currentNode = nextNode;
+
+      return _reverseRecur(previousNode, currentNode);
+    }
+
+    let previousNode = null;
+    let currentNode = this.head;
+
+    this.head = _reverseRecur(previousNode, currentNode);
   }
 }
