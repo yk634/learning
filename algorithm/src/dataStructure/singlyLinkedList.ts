@@ -1,8 +1,8 @@
 class NodeObject {
   data: any;
-  next: NodeObject;
+  next: NodeObject | null;
 
-  constructor(data, next: NodeObject = null) {
+  constructor(data: any, next: NodeObject = null) {
     this.data = data;
     this.next = next;
   }
@@ -38,7 +38,7 @@ export class SinglyLinkedList {
       currentNode = currentNode.next;
     }
 
-    currentNode.next = new NodeObject(data);
+    currentNode.next = newNode;
   }
 
   insert(data: any): void {
@@ -54,7 +54,7 @@ export class SinglyLinkedList {
       return;
     }
 
-    let previousNode = null;
+    let previousNode: NodeObject | null = null;
     while (currentNode && currentNode.data !== data) {
       previousNode = currentNode;
       currentNode = currentNode.next;
@@ -82,7 +82,7 @@ export class SinglyLinkedList {
   }
 
   reverseRecursive(): void {
-    function _reverseRecur(previousNode, currentNode) {
+    function _reverseRecur(previousNode: NodeObject, currentNode: NodeObject) {
       if (!currentNode) return previousNode;
 
       const nextNode = currentNode.next;
@@ -99,4 +99,31 @@ export class SinglyLinkedList {
 
     this.head = _reverseRecur(previousNode, currentNode);
   }
+
+  reverseEven(): void {
+    function _reverseEven(head: NodeObject, previousNode: NodeObject) {
+      if (!head) return null;
+
+      let currentNode = head;
+      while (currentNode && currentNode.data % 2 === 0) {
+        const nextNode = currentNode.next;
+        currentNode.next = previousNode;
+        previousNode = currentNode;
+        currentNode = nextNode;
+      }
+
+      if (currentNode !== head) {
+        head.next = currentNode;
+        _reverseEven(currentNode, null);
+        return previousNode;
+      } else {
+        head.next = _reverseEven(head.next, null);
+        return head;
+      }
+    }
+
+    this.head = _reverseEven(this.head, null);
+  }
 }
+
+const obj = new SinglyLinkedList();

@@ -94,4 +94,33 @@ describe('Singly Linked List Functions Tests', () => {
       next: { data: 2, next: { data: 1, next: null } },
     });
   });
+
+  test('Reverse Even Function Test', () => {
+    linkedList.append(1);
+    linkedList.append(2);
+    linkedList.append(3);
+    linkedList.append(4);
+    linkedList.append(6);
+    linkedList.append(8);
+    linkedList.append(5);
+
+    linkedList.reverseEven();
+
+    expect(linkedList.head).toEqual({
+      data: 1,
+      next: {
+        data: 2,
+        next: {
+          data: 3,
+          next: {
+            data: 8,
+            next: {
+              data: 6,
+              next: { data: 4, next: { data: 5, next: null } },
+            },
+          },
+        },
+      },
+    });
+  });
 });
