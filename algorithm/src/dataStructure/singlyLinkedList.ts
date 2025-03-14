@@ -125,5 +125,3 @@ export class SinglyLinkedList {
     this.head = _reverseEven(this.head, null);
   }
 }
-
-const obj = new SinglyLinkedList();
