@@ -69,7 +69,6 @@ export class SinglyLinkedList {
     let previousNode = null;
     let currentNode = this.head;
 
-    let i = 0;
     while (currentNode) {
       const nextNode = currentNode.next;
       currentNode.next = previousNode;
@@ -112,13 +111,13 @@ export class SinglyLinkedList {
         currentNode = nextNode;
       }
 
-      if (currentNode !== head) {
+      if (currentNode === head) {
+        head.next = _reverseEven(head.next, null);
+        return head;
+      } else {
         head.next = currentNode;
         _reverseEven(currentNode, null);
         return previousNode;
-      } else {
-        head.next = _reverseEven(head.next, null);
-        return head;
       }
     }
 

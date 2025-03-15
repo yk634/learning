@@ -1,4 +1,5 @@
 import { SinglyLinkedList } from 'src/dataStructure/singlyLinkedList';
+import { DoublyLinkedList } from 'src/dataStructure/doublyLinkedList';
 
 describe('Singly Linked List Functions Tests', () => {
   let linkedList: SinglyLinkedList;
@@ -7,26 +8,34 @@ describe('Singly Linked List Functions Tests', () => {
     linkedList = new SinglyLinkedList();
   });
 
-  test('Append Function Test', () => {
-    linkedList.append(1);
-    linkedList.append(2);
-    linkedList.append(3);
+  test('Initialized state is null', () => {
+    expect(linkedList.head).toBeNull();
+  });
 
-    expect(linkedList.head).toEqual({
-      data: 1,
-      next: { data: 2, next: { data: 3, next: null } },
-    });
+  test('Append Function Test', () => {
+    linkedList.append(0);
+
+    expect(linkedList.head.data).toBe(0);
+    expect(linkedList.head.next).toBeNull();
+
+    linkedList.append(1);
+
+    expect(linkedList.head.data).toBe(0);
+    expect(linkedList.head.next.data).toBe(1);
+    expect(linkedList.head.next.next).toBeNull();
   });
 
   test('Insert Function Test', () => {
-    linkedList.insert(1);
-    linkedList.insert(2);
-    linkedList.insert(3);
+    linkedList.insert(0);
 
-    expect(linkedList.head).toEqual({
-      data: 3,
-      next: { data: 2, next: { data: 1, next: null } },
-    });
+    expect(linkedList.head.data).toBe(0);
+    expect(linkedList.head.next).toBeNull();
+
+    linkedList.insert(1);
+
+    expect(linkedList.head.data).toBe(1);
+    expect(linkedList.head.next.data).toBe(0);
+    expect(linkedList.head.next.next).toBeNull();
   });
 
   test('Remove Function Test', () => {
@@ -37,7 +46,7 @@ describe('Singly Linked List Functions Tests', () => {
     linkedList.append(1);
     linkedList.remove(0);
 
-    expect(linkedList.head).toEqual({ data: 1, next: null });
+    expect(linkedList.head.data).toBe(1);
 
     linkedList.remove(1);
 
@@ -47,52 +56,47 @@ describe('Singly Linked List Functions Tests', () => {
     linkedList.append(3);
     linkedList.remove(2);
 
-    expect(linkedList.head).toEqual({
-      data: 3,
-      next: null,
-    });
+    expect(linkedList.head.data).toBe(3);
   });
 
   test('Print Function Test', () => {
+    linkedList.append(0);
     linkedList.append(1);
     linkedList.append(2);
-    linkedList.append(3);
 
     const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
 
     linkedList.print();
 
+    expect(consoleSpy).toHaveBeenCalledWith(0);
     expect(consoleSpy).toHaveBeenCalledWith(1);
     expect(consoleSpy).toHaveBeenCalledWith(2);
-    expect(consoleSpy).toHaveBeenCalledWith(3);
 
     consoleSpy.mockRestore();
   });
 
   test('Reverse Iterative Function Test', () => {
+    linkedList.append(0);
     linkedList.append(1);
     linkedList.append(2);
-    linkedList.append(3);
 
     linkedList.reverseIterative();
 
-    expect(linkedList.head).toEqual({
-      data: 3,
-      next: { data: 2, next: { data: 1, next: null } },
-    });
+    expect(linkedList.head.data).toBe(2);
+    expect(linkedList.head.next.data).toBe(1);
+    expect(linkedList.head.next.next.data).toBe(0);
   });
 
   test('Reverse Recursive Function Test', () => {
+    linkedList.append(0);
     linkedList.append(1);
     linkedList.append(2);
-    linkedList.append(3);
 
     linkedList.reverseRecursive();
 
-    expect(linkedList.head).toEqual({
-      data: 3,
-      next: { data: 2, next: { data: 1, next: null } },
-    });
+    expect(linkedList.head.data).toBe(2);
+    expect(linkedList.head.next.data).toBe(1);
+    expect(linkedList.head.next.next.data).toBe(0);
   });
 
   test('Reverse Even Function Test', () => {
@@ -106,21 +110,123 @@ describe('Singly Linked List Functions Tests', () => {
 
     linkedList.reverseEven();
 
-    expect(linkedList.head).toEqual({
-      data: 1,
-      next: {
-        data: 2,
-        next: {
-          data: 3,
-          next: {
-            data: 8,
-            next: {
-              data: 6,
-              next: { data: 4, next: { data: 5, next: null } },
-            },
-          },
-        },
-      },
-    });
+    expect(linkedList.head.data).toBe(1);
+    expect(linkedList.head.next.data).toBe(2);
+    expect(linkedList.head.next.next.data).toBe(3);
+    expect(linkedList.head.next.next.next.data).toBe(8);
+    expect(linkedList.head.next.next.next.next.data).toBe(6);
+    expect(linkedList.head.next.next.next.next.next.data).toBe(4);
+    expect(linkedList.head.next.next.next.next.next.next.data).toBe(5);
+  });
+});
+
+describe('Doubly Linked List Functions Tests', () => {
+  let linkedList: DoublyLinkedList;
+
+  beforeEach(() => {
+    linkedList = new DoublyLinkedList();
+  });
+
+  test('Initialized state is null', () => {
+    expect(linkedList.head).toBeNull();
+  });
+
+  test('Append Function Test', () => {
+    linkedList.append(0);
+
+    expect(linkedList.head.data).toBe(0);
+    expect(linkedList.head.prev).toBeNull();
+    expect(linkedList.head.next).toBeNull();
+
+    linkedList.append(1);
+
+    expect(linkedList.head.data).toBe(0);
+    expect(linkedList.head.prev).toBeNull();
+    expect(linkedList.head.next.data).toBe(1);
+    expect(linkedList.head.next.prev.data).toBe(0);
+    expect(linkedList.head.next.next).toBeNull();
+  });
+
+  test('Insert Function Test', () => {
+    linkedList.insert(0);
+
+    expect(linkedList.head.data).toBe(0);
+    expect(linkedList.head.prev).toBeNull();
+    expect(linkedList.head.next).toBeNull();
+
+    linkedList.insert(1);
+
+    expect(linkedList.head.data).toBe(1);
+    expect(linkedList.head.prev).toBeNull();
+    expect(linkedList.head.next.data).toBe(0);
+    expect(linkedList.head.next.prev.data).toBe(1);
+    expect(linkedList.head.next.next).toBeNull();
+  });
+
+  test('Remove Function Test', () => {
+    linkedList.remove(0);
+
+    expect(linkedList.head).toBeNull();
+
+    linkedList.append(1);
+    linkedList.remove(0);
+
+    expect(linkedList.head.data).toBe(1);
+
+    linkedList.remove(1);
+
+    expect(linkedList.head).toBeNull();
+
+    linkedList.append(2);
+    linkedList.append(3);
+    linkedList.remove(2);
+
+    expect(linkedList.head.data).toBe(3);
+  });
+
+  test('Print Function Test', () => {
+    linkedList.append(0);
+    linkedList.append(1);
+    linkedList.append(2);
+
+    const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
+
+    linkedList.print();
+
+    expect(consoleSpy).toHaveBeenCalledWith(0);
+    expect(consoleSpy).toHaveBeenCalledWith(1);
+    expect(consoleSpy).toHaveBeenCalledWith(2);
+
+    consoleSpy.mockRestore();
+  });
+
+  test('Reverse Iterative Function Test', () => {
+    linkedList.append(0);
+    linkedList.append(1);
+    linkedList.append(2);
+
+    linkedList.reverseIterative();
+
+    expect(linkedList.head.data).toBe(2);
+    expect(linkedList.head.prev).toBeNull();
+    expect(linkedList.head.next.data).toBe(1);
+    expect(linkedList.head.next.prev.data).toBe(2);
+    expect(linkedList.head.next.next.data).toBe(0);
+    expect(linkedList.head.next.next.prev.data).toBe(1);
+  });
+
+  test('Reverse Recursive Function Test', () => {
+    linkedList.append(0);
+    linkedList.append(1);
+    linkedList.append(2);
+
+    linkedList.reverseRecursive();
+
+    expect(linkedList.head.data).toBe(2);
+    expect(linkedList.head.prev).toBeNull();
+    expect(linkedList.head.next.data).toBe(1);
+    expect(linkedList.head.next.prev.data).toBe(2);
+    expect(linkedList.head.next.next.data).toBe(0);
+    expect(linkedList.head.next.next.prev.data).toBe(1);
   });
 });
