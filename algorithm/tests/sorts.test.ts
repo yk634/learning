@@ -14,7 +14,7 @@ import { radixSort } from 'src/sorts/radixSort';
 import { quickSort } from 'src/sorts/quickSort';
 import { mergeSort } from 'src/sorts/mergeSort';
 
-describe('Sorting Algorithm Tests', () => {
+describe('Sorting Algorithm', () => {
   const sortFunctions = [
     { func: bubbleSort, name: 'Bubble Sort' },
     { func: cocktailSort, name: 'Cocktail Sort' },

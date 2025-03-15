@@ -1,7 +1,7 @@
 import { SinglyLinkedList } from 'src/dataStructure/singlyLinkedList';
 import { DoublyLinkedList } from 'src/dataStructure/doublyLinkedList';
 
-describe('Singly Linked List Functions Tests', () => {
+describe('Singly Linked List', () => {
   let linkedList: SinglyLinkedList;
 
   beforeEach(() => {
@@ -120,7 +120,7 @@ describe('Singly Linked List Functions Tests', () => {
   });
 });
 
-describe('Doubly Linked List Functions Tests', () => {
+describe('Doubly Linked List', () => {
   let linkedList: DoublyLinkedList;
 
   beforeEach(() => {

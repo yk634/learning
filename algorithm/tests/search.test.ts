@@ -2,7 +2,7 @@ import { generateSortedArray } from 'src/utils/generate';
 import { binarySearch, binarySearchRecursive } from 'src/search/binarySearch';
 import { linearSearch } from 'src/search/linearSearch';
 
-describe('Searching Algorithm Tests', () => {
+describe('Searching Algorithm', () => {
   const searchFunctions = [
     { func: linearSearch, name: 'Linear Search' },
     { func: binarySearch, name: 'Binary Search' },
