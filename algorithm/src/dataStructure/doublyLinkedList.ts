@@ -118,4 +118,22 @@ export class DoublyLinkedList {
 
     if (previousNode) this.head = previousNode;
   }
+
+  sort(): void {
+    let currentNode = this.head;
+    while (currentNode) {
+      let comparisonNode = currentNode.next;
+
+      while (comparisonNode) {
+        if (currentNode.data > comparisonNode.data) {
+          [currentNode.data, comparisonNode.data] = [
+            comparisonNode.data,
+            currentNode.data,
+          ];
+        }
+        comparisonNode = comparisonNode.next;
+      }
+      currentNode = currentNode.next;
+    }
+  }
 }
