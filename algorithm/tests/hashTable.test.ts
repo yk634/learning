@@ -1,4 +1,7 @@
 import { HashTable } from 'src/dataStructure/hashTable';
+import { getPairHash } from 'src/dataStructure/hashTable';
+import { getPairList } from '../src/dataStructure/hashTable';
+import { generateRandomArray } from 'src/utils/generate';
 
 describe('HashTable', () => {
   let hashTable: HashTable<string, number>;
@@ -41,4 +44,36 @@ describe('HashTable', () => {
     expect(hashTable.get('cat')).toBe(2);
     expect(hashTable.get('bird')).toBe(3);
   });
+});
+
+describe('HashTable Performance', () => {
+  const max = 10000000;
+  const size = max * 2;
+  const numbers = generateRandomArray(max, size);
+
+  const performanceReports: {
+    name: string;
+    time: number;
+  }[] = [];
+
+  const searchFunctions = [
+    { func: getPairHash, name: 'Use Hash Table' },
+    { func: getPairList, name: 'Use Simple Array' },
+  ];
+
+  for (const { func, name } of searchFunctions) {
+    describe(`${name}`, () => {
+      const startTime = performance.now();
+      func(numbers, size);
+      const endTime = performance.now();
+      const timeTaken = endTime - startTime;
+
+      performanceReports.push({
+        name,
+        time: timeTaken,
+      });
+    });
+  }
+
+  console.table(performanceReports);
 });

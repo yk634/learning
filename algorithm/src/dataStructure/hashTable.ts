@@ -1,5 +1,35 @@
 import { createHash } from 'crypto';
 
+export function getPairHash(
+  numbers: number[],
+  target: number
+): number[] | null {
+  const cache = new Set<number>();
+  for (const num of numbers) {
+    const val = target - num;
+    if (cache.has(val)) {
+      return [val, num];
+    }
+    cache.add(num);
+  }
+  return null;
+}
+
+export function getPairList(
+  numbers: number[],
+  target: number
+): number[] | null {
+  const cache = [];
+  for (const num of numbers) {
+    const val = target - num;
+    if (cache.includes(val)) {
+      return [val, num];
+    }
+    cache.push(num);
+  }
+  return null;
+}
+
 export class HashTable<K, V> {
   size: number;
   table: [K, V][][];
