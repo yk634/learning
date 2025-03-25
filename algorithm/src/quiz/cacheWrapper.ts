@@ -1,4 +1,4 @@
-function memoize(f: (n: number) => number) {
+function memoize(f: (n: number) => number): (n: number) => number {
   const cache: Record<number, number> = {};
   return n => {
     if (!(n in cache)) {
@@ -16,7 +16,7 @@ const longFunc = memoize(n => {
   return result;
 });
 
-function execFunc() {
+function execFunc(): void {
   const startTime = performance.now();
   for (let i = 0; i < 10; i++) {
     console.log(longFunc(i));
